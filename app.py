@@ -28,7 +28,7 @@ from tensorflow.keras.models import load_model
 
 MODEL_PATH = "models/best_fer2013_model.keras"
 SCALER_PATH = "models/spotify_scaler.pkl"
-DATA_PATH = "data/spotify_moods.csv"
+DATA_PATH = "data/top_10000_1950-now.csv"
 
 # Must match the order the CNN's output layer was trained on (FER-2013 folder
 # order) -- the "suprise" spelling is intentional, it matches the training data.
