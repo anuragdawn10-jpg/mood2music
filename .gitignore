@@ -1,0 +1,6 @@
+__pycache__/
+.ipynb_checkpoints/
+fer2013_data/
+*.pyc
+.env
+venv/
