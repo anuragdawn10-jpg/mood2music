@@ -14,6 +14,14 @@ Expected repo layout (paths below are relative to this file):
 import os
 
 import cv2
+
+# --- TEMPORARY DIAGNOSTIC: remove once cv2.CascadeClassifier issue is resolved ---
+import sys
+print("cv2 loaded from:", getattr(cv2, "__file__", "NO __file__ ATTRIBUTE"), file=sys.stderr)
+print("cv2 version:", getattr(cv2, "__version__", "NO __version__ ATTRIBUTE"), file=sys.stderr)
+print("cv2 has CascadeClassifier:", hasattr(cv2, "CascadeClassifier"), file=sys.stderr)
+print("cv2 dir sample:", [a for a in dir(cv2) if not a.startswith("_")][:20], file=sys.stderr)
+# --- END TEMPORARY DIAGNOSTIC ---
 import joblib
 import numpy as np
 import pandas as pd
@@ -28,7 +36,7 @@ from tensorflow.keras.models import load_model
 
 MODEL_PATH = "models/best_fer2013_model.keras"
 SCALER_PATH = "models/spotify_scaler.pkl"
-DATA_PATH = "data/top_10000_1950-now.csv"
+DATA_PATH = "data/spotify_moods.csv"
 
 # Must match the order the CNN's output layer was trained on (FER-2013 folder
 # order) -- the "suprise" spelling is intentional, it matches the training data.
