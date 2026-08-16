@@ -8,7 +8,7 @@ Expected repo layout (paths below are relative to this file):
     app.py
     models/best_fer2013_model.keras
     models/spotify_scaler.pkl
-    data/top_10000_1950-now.csv
+    data/spotify_moods.csv   <- spotify dataframe with "Mood" column already assigned
 """
 
 import os
@@ -176,6 +176,18 @@ scaler = load_scaler()
 face_detector = load_face_detector()
 spotify = load_song_data()
 
+required_columns = {"Track Name", "Artist Name(s)", "Popularity", "Mood"} | set(FEATURES)
+missing_columns = required_columns - set(spotify.columns)
+if missing_columns:
+    st.error(
+        "data/spotify_moods.csv is missing required column(s): "
+        + ", ".join(sorted(missing_columns))
+        + ". This usually means the CSV wasn't exported after the notebook's "
+          "mood-assignment step actually ran -- in the notebook, use Restart "
+          "and run all, then re-export spotify_moods.csv and replace it in the repo."
+    )
+    st.stop()
+
 top_n = st.slider("Number of songs to recommend", min_value=5, max_value=25, value=10)
 
 source = st.radio("Photo source", ["Camera", "Upload a photo"], horizontal=True)
@@ -217,4 +229,5 @@ if image_file is not None:
             hide_index=True,
         )
 else:
+    st.info("Take or upload a photo to get started.")
     st.info("Take or upload a photo to get started.")
