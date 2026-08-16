@@ -1,7 +1,10 @@
 # Mood2Music
 
-Detects a person's mood from a photo (CNN trained on FER-2013) and recommends
-Spotify tracks whose audio features match that mood.
+Emotion detection from photos using CNN trained on FER-2013
+Spotify track recommendations based on detected mood
+Mood profiles (Happy, Sad, Angry, Calm, Fear, Surprise, Neutral)
+Face detection with fallback to full image classification
+Hybrid recommendation scoring (60% mood similarity, 40% popularity)
 
 ## Repo structure
 
