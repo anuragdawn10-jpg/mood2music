@@ -14,14 +14,6 @@ Expected repo layout (paths below are relative to this file):
 import os
 
 import cv2
-
-# --- TEMPORARY DIAGNOSTIC: remove once cv2.CascadeClassifier issue is resolved ---
-import sys
-print("cv2 loaded from:", getattr(cv2, "__file__", "NO __file__ ATTRIBUTE"), file=sys.stderr)
-print("cv2 version:", getattr(cv2, "__version__", "NO __version__ ATTRIBUTE"), file=sys.stderr)
-print("cv2 has CascadeClassifier:", hasattr(cv2, "CascadeClassifier"), file=sys.stderr)
-print("cv2 dir sample:", [a for a in dir(cv2) if not a.startswith("_")][:20], file=sys.stderr)
-# --- END TEMPORARY DIAGNOSTIC ---
 import joblib
 import numpy as np
 import pandas as pd
